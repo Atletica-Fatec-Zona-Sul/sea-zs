@@ -1,6 +1,6 @@
 # sea-zs
 
-##Participantes
+## Participantes
 
 1. Artur Anderson 
 2. Daniel Campos
