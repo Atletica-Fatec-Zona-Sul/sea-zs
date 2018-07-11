@@ -6,3 +6,9 @@
 2. Daniel Campos
 3. Gustavo Valverde
 4. Felipe Moura
+
+### Tarefas
+
+- [x] Aprender
+- [ ] Se Divertir
+- [ ] Se Formar
