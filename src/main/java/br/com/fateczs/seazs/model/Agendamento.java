@@ -1,5 +1,8 @@
 package br.com.fateczs.seazs.model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,4 +16,11 @@ public class Agendamento {
 	
 	@Id
 	private Integer id;
+	@Column(name = "dataNasc")
+	private Date inicio;
+	@Column(name = "dataNasc")
+	private Date fim;
+	@Column(name = "pontuacaoStaff")
+	private Integer pontuacaoStaff;
+	
 }
