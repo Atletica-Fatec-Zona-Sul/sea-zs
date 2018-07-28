@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Embeddable
 public class UsuarioDisciplinaID implements Serializable {
@@ -14,9 +16,10 @@ public class UsuarioDisciplinaID implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	
 	private Disciplina disciplina;
 	private Usuario usuario;
-	
+	@Temporal(TemporalType.DATE)
 	private Date dtInicio;
 	
 	public UsuarioDisciplinaID() {
@@ -24,7 +27,7 @@ public class UsuarioDisciplinaID implements Serializable {
 	}
 
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	public Disciplina getDisciplina() {
 		return disciplina;
 	}
@@ -35,8 +38,7 @@ public class UsuarioDisciplinaID implements Serializable {
 		this.disciplina = disciplina;
 	}
 
-
-	@ManyToOne
+	@ManyToOne(optional = false)
 	public Usuario getUsuario() {
 		return usuario;
 	}

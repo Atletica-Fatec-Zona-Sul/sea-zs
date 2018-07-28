@@ -41,34 +41,32 @@ import javax.persistence.Transient;
 			this.idUsuarioDisciplina = idUsuarioDisciplina;
 		}
 		
-		@Transient
+	/*	@Transient
 		public Usuario getUsuario() {
 			return this.idUsuarioDisciplina.getUsuario();
 		}
 		
 		public void setUsuario(Usuario usuario) {
 			this.idUsuarioDisciplina.setUsuario(usuario);
-		}
+		} */
 		
-		@Transient
+	/*	@Transient
 		public Disciplina getDisciplina() {
 			return this.idUsuarioDisciplina.getDisciplina();
 		}
 		
 		public void setDisciplina(Disciplina disciplina) {
 			this.idUsuarioDisciplina.setDisciplina(disciplina);
-		}
+		}*/
 		
-		@Transient
-		@Temporal(TemporalType.DATE)
-		@Column(name = "data_inicioDisciplina")
+/*		@Transient
 		public Date getDtInicio() {
 			return this.idUsuarioDisciplina.getDtInicio();
-		}
+		} 
 
 		public void setDtInicio(Date dtInicio) {
 			this.idUsuarioDisciplina.setDtInicio(dtInicio);
-		}
+		}*/
 
 		public Date getDtFim() {
 			return dtFim;
