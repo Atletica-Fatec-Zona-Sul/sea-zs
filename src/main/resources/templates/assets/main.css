@@ -1,0 +1,19 @@
+#header {
+    height: 100%;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.t_logo{
+	font-size: 33px;
+	text-align: center;
+}
+
+.c_logo{
+	height: 225px; 
+	width: 100%; 
+	display: block;
+}
