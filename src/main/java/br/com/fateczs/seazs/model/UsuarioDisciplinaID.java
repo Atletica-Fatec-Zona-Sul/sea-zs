@@ -3,10 +3,14 @@ package br.com.fateczs.seazs.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Embeddable
 public class UsuarioDisciplinaID implements Serializable {
@@ -19,7 +23,6 @@ public class UsuarioDisciplinaID implements Serializable {
 	
 	private Disciplina disciplina;
 	private Usuario usuario;
-	@Temporal(TemporalType.DATE)
 	private Date dtInicio;
 	
 	public UsuarioDisciplinaID() {
@@ -48,7 +51,9 @@ public class UsuarioDisciplinaID implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "data_inicioDisciplina", nullable = false)
 	public Date getDtInicio() {
 		return dtInicio;
 	}

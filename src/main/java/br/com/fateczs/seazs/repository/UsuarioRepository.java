@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import br.com.fateczs.seazs.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-
+	
+	public Usuario findByEmailAndSenha(String email, String senha);
 }

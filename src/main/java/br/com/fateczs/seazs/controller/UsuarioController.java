@@ -48,6 +48,12 @@ public class UsuarioController {
 		return usuServ.listar();
 	}
 	
+	@PostMapping("/login")
+	@ResponseBody
+	public Usuario loginUsuario(Usuario usuario){
+		return usuServ.validarLogin(usuario);
+	}
+	
 	@Autowired
 	private UsuarioService usuServ;
 }

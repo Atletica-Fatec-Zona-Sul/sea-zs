@@ -45,4 +45,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return repository.findAll();
 	}
 
+	@Override
+	public Usuario validarLogin(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return repository.findByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
+	}
+
 }

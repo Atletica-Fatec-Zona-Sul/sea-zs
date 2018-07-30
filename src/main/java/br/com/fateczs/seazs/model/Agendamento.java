@@ -1,13 +1,16 @@
 package br.com.fateczs.seazs.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,10 +36,12 @@ public class Agendamento {
 	
 	@NotNull
 	@ManyToOne
+	@JoinColumn(name = "id_evento")
 	private Evento evento;
 	
 	@NotNull
 	@ManyToOne
+	@JoinColumn(name = "id_usuario_organizador")
 	private Usuario usuarioOrganizador;
 	
 	@NotNull
@@ -52,6 +57,9 @@ public class Agendamento {
 	@NotNull
 	@Column(name = "pontuacaoStaff", nullable = false)
 	private Integer pontuacaoStaff;
+	
+	@OneToMany(mappedBy = "agendamento")
+	private List<Atividade> atividades;
 	
 	public Agendamento () { }
 
@@ -101,6 +109,14 @@ public class Agendamento {
 
 	public void setPontuacaoStaff(Integer pontuacaoStaff) {
 		this.pontuacaoStaff = pontuacaoStaff;
+	}
+
+	public List<Atividade> getAtividades() {
+		return atividades;
+	}
+
+	public void setAtividades(List<Atividade> atividades) {
+		this.atividades = atividades;
 	}
 	
 	

@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity(name = "usuarioDisciplina")
 	@Table(name = "tb_Usuario_Disciplina")
 	@AssociationOverrides({
@@ -25,7 +27,7 @@ import javax.persistence.Transient;
 		private UsuarioDisciplinaID idUsuarioDisciplina = new UsuarioDisciplinaID();
 		
 		@Temporal(TemporalType.DATE)
-		@Column(name = "data_fimDisciplina")
+		@Column(name = "data_fimDisciplina", nullable = false)
 		private Date dtFim;
 		
 		public UsuarioDisciplina() {
@@ -67,7 +69,8 @@ import javax.persistence.Transient;
 		public void setDtInicio(Date dtInicio) {
 			this.idUsuarioDisciplina.setDtInicio(dtInicio);
 		}*/
-
+		
+		@Temporal(TemporalType.DATE)
 		public Date getDtFim() {
 			return dtFim;
 		}
