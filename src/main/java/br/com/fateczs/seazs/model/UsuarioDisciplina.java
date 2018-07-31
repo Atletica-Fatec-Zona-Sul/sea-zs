@@ -12,9 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "usuarioDisciplina")
 	@Table(name = "tb_Usuario_Disciplina")
