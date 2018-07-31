@@ -1,5 +1,6 @@
 package br.com.fateczs.seazs.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.AssociationOverride;
@@ -18,16 +19,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity(name = "usuarioDisciplina")
 	@Table(name = "tb_Usuario_Disciplina")
 	@AssociationOverrides({
-		@AssociationOverride(name = "pk.Usuario", 
+		@AssociationOverride(name = "idUsuarioDisciplina.usuario", 
 			joinColumns = @JoinColumn(name = "id_usuario")),
-		@AssociationOverride(name = "pk.Disciplina", 
+		@AssociationOverride(name = "idUsuarioDisciplina.disciplina", 
 			joinColumns = @JoinColumn(name = "id_disciplina")) })
-	public class UsuarioDisciplina {
+	public class UsuarioDisciplina implements Serializable {
 		
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 		private UsuarioDisciplinaID idUsuarioDisciplina = new UsuarioDisciplinaID();
 		
-		@Temporal(TemporalType.DATE)
-		@Column(name = "data_fimDisciplina", nullable = false)
 		private Date dtFim;
 		
 		public UsuarioDisciplina() {
@@ -71,6 +75,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 		}*/
 		
 		@Temporal(TemporalType.DATE)
+		@Column(name = "data_fimDisciplina", nullable = false)
 		public Date getDtFim() {
 			return dtFim;
 		}

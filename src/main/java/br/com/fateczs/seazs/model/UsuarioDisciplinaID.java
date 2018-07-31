@@ -62,5 +62,44 @@ public class UsuarioDisciplinaID implements Serializable {
 	public void setDtInicio(Date dtInicio) {
 		this.dtInicio = dtInicio;
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((disciplina == null) ? 0 : disciplina.hashCode());
+		result = prime * result + ((dtInicio == null) ? 0 : dtInicio.hashCode());
+		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UsuarioDisciplinaID other = (UsuarioDisciplinaID) obj;
+		if (disciplina == null) {
+			if (other.disciplina != null)
+				return false;
+		} else if (!disciplina.equals(other.disciplina))
+			return false;
+		if (dtInicio == null) {
+			if (other.dtInicio != null)
+				return false;
+		} else if (!dtInicio.equals(other.dtInicio))
+			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
+		return true;
+	}
 	
 }
