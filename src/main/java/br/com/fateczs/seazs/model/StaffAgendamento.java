@@ -17,32 +17,28 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity(name = "Inscricao")
-@Table(name = "tb_Inscricao",
-uniqueConstraints = @UniqueConstraint(columnNames = {"id_atividade", "id_usuario"})
+@Entity(name = "StaffAgendamento")
+@Table(name = "tb_Staff_Agendamento",
+uniqueConstraints = @UniqueConstraint(columnNames = {"id_agendamento", "id_usuario"})
 		)
-public class Inscricao {
-
+public class StaffAgendamento {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator="native")
 	@GenericGenerator(
 			name = "native",
 			strategy = "native"
 			)
-	@Column(name = "sq_Inscricao")
-	private Integer sequencialInscricao;
+	@Column(name = "sq_staff")
+	private Integer sequencialStaff;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_atividade")
-	private Atividade atividade;
+	@JoinColumn(name = "id_agendamento")
+	private Agendamento agendamento;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_papel")
-	private Papel papel;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_Inscricao", nullable = false)
@@ -58,20 +54,20 @@ public class Inscricao {
 	@Column(name = "pontuacaoParticipante")
 	private Integer pontuacaoRecebida;
 
-	public Integer getSequencialInscricao() {
-		return sequencialInscricao;
+	public Integer getSequencialStaff() {
+		return sequencialStaff;
 	}
 
-	public void setSequencialInscricao(Integer sequencialInscricao) {
-		this.sequencialInscricao = sequencialInscricao;
+	public void setSequencialStaff(Integer sequencialStaff) {
+		this.sequencialStaff = sequencialStaff;
 	}
 
-	public Atividade getAtividade() {
-		return atividade;
+	public Agendamento getAgendamento() {
+		return agendamento;
 	}
 
-	public void setAtividade(Atividade atividade) {
-		this.atividade = atividade;
+	public void setAgendamento(Agendamento agendamento) {
+		this.agendamento = agendamento;
 	}
 
 	public Usuario getUsuario() {
@@ -113,4 +109,7 @@ public class Inscricao {
 	public void setPontuacaoRecebida(Integer pontuacaoRecebida) {
 		this.pontuacaoRecebida = pontuacaoRecebida;
 	}
+	
+	
+	
 }

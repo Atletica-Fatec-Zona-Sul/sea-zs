@@ -32,7 +32,7 @@ public class Atividade {
 	@Column(name = "id_Atividade")
 	private Integer id;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_agendamento")
 	private Agendamento agendamento;
 	
