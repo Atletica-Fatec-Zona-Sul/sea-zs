@@ -49,9 +49,11 @@ public class Inscricao {
 	private Date dtInscricao;
 	
 	@Column(name = "checkIn")
+	@ColumnDefault("0")
 	private Boolean checkIn;
 	
 	@Column(name = "checkOut")
+	@ColumnDefault("0")
 	private Boolean checkOut;
 	
 	@Column(name = "pontuacaoParticipante")
@@ -87,6 +89,14 @@ public class Inscricao {
 
 	public void setDtInscricao(Date dtInscricao) {
 		this.dtInscricao = dtInscricao;
+	}
+
+	public Papel getPapel() {
+		return papel;
+	}
+
+	public void setPapel(Papel papel) {
+		this.papel = papel;
 	}
 
 	public Boolean getCheckIn() {
