@@ -2,6 +2,7 @@ package br.com.fateczs.seazs.service.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,7 @@ public class AtividadeServiceImpl implements AtividadeService {
 		return repository.findAll(sortByInicioAsc());
 	}
 	
+	@Autowired
 	private AtividadeRepository repository;
 	
 	private Sort sortByInicioAsc() {

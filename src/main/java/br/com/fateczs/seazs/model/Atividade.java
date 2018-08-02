@@ -195,6 +195,15 @@ public class Atividade {
 	public void setQtdCheckIn(Integer qtdCheckIn) {
 		this.qtdCheckIn = qtdCheckIn;
 	}
+
+	@Override
+	public String toString() {
+		return "Atividade [id=" + id + ", agendamento=" + agendamento + ", nome=" + nome + ", descricao=" + descricao
+				+ ", categoria=" + categoria + ", localAtividade=" + localAtividade + ", inicioAtividade="
+				+ inicioAtividade + ", fimAtividade=" + fimAtividade + ", cargaHoraria=" + cargaHoraria + ", qtdVagas="
+				+ qtdVagas + ", pontuacaoParticipante=" + pontuacaoParticipante + ", flagContinua=" + flagContinua
+				+ ", flagCumulativa=" + flagCumulativa + ", qtdCheckIn=" + qtdCheckIn + "]";
+	}
 	
 	
 }

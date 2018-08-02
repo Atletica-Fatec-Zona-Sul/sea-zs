@@ -55,7 +55,7 @@ public class Evento {
 	@Column(name = "data_inclusao", nullable = false)
 	private Date dataInclusao;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_usuario_criador")
 	private Usuario usuarioCriador;
 	

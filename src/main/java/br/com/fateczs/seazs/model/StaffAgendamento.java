@@ -44,11 +44,12 @@ public class StaffAgendamento {
 	@Column(name = "data_Inscricao", nullable = false)
 	private Date dtInscricao;
 	
-	@Column(name = "checkIn")
+	@Column(name = "checkIn", nullable = false)
 	@ColumnDefault("0")
 	private Boolean checkIn;
 	
-	@Column(name = "checkOut")
+	@Column(name = "checkOut", nullable = false)
+	@ColumnDefault("0")
 	private Boolean checkOut;
 	
 	@Column(name = "pontuacaoParticipante")

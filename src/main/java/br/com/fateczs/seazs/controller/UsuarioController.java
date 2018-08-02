@@ -50,10 +50,10 @@ public class UsuarioController {
 	
 	@PostMapping("/login")
 	@ResponseBody
-	public Usuario loginUsuario(Usuario usuario){
+	public Usuario loginUsuario(@RequestBody Usuario usuario){
 		return usuServ.validarLogin(usuario);
 	}
-	
+
 	@Autowired
 	private UsuarioService usuServ;
 }

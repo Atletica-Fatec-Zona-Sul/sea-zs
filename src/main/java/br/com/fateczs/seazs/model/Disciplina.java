@@ -36,7 +36,7 @@ public class Disciplina {
 	@Column(name = "nome_disciplina", nullable = false)
 	private String nome;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_curso")
 	private Curso curso;
 	

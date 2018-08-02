@@ -49,7 +49,6 @@ public class Inscricao {
 	private Date dtInscricao;
 	
 	@Column(name = "checkIn")
-	@ColumnDefault("0")
 	private Boolean checkIn;
 	
 	@Column(name = "checkOut")

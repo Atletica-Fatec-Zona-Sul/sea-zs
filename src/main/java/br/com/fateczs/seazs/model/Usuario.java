@@ -42,19 +42,19 @@ public class Usuario {
 	@Column(name = "senha", nullable = false)
 	private String senha;
 
-	@NotNull
+	
 	@Column(name = "nome_usuario", nullable = false)
 	private String nome;
 
-	@NotNull
+	
 	@Column(name = "endereco_usuario", nullable = false)
 	private String endereco;
 
-	@NotNull
+	
 	@Column(name = "celular_usuario", nullable = false)
 	private String celular;
 
-	@NotNull
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_nascimento", nullable = false)
 	private Date dataNasc;
@@ -65,22 +65,22 @@ public class Usuario {
 	@Column(name = "turno")
 	private Character turno;
 
-	@NotNull
+	
 	@Column(name = "adm", nullable = false)
 	private Boolean adm;
 
-	@NotNull
+	
 	@Column(name = "rg_usuario", nullable = false)
 	private String rg;
 
-	@NotNull
+	
 	@Column(name = "genero_usuario", nullable = false)
 	private String genero;
 
 	@Column(name = "matricula_usuario")
 	private String matricula;
 
-	@NotNull
+	
 	@Column(name = "tipo_usuario", nullable = false)
 	private Integer tipoUsuario;
 
