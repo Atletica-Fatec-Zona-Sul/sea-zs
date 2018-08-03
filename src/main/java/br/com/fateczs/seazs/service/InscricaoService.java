@@ -16,4 +16,6 @@ public interface InscricaoService {
 	public List<Inscricao> listar();
 
 	List<Inscricao> listarPorDataAsc();
+	
+	public Inscricao validaPresença(Inscricao inscricao);
 }

@@ -54,6 +54,13 @@ public class InscricaoController {
 		return inscricaoServ.listarPorDataAsc();
 	}
 	
+	@PostMapping("/validaPresenca")
+	@ResponseBody
+	public Inscricao validaPresenca(@Valid @RequestBody Inscricao inscricao) {
+		return inscricaoServ.validaPresença(inscricao);
+	}
+	
+	
 	@Autowired
 	private InscricaoService inscricaoServ;
 }

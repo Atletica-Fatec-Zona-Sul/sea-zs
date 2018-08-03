@@ -17,6 +17,10 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity(name = "Inscricao")
 @Table(name = "tb_Inscricao",
 uniqueConstraints = @UniqueConstraint(columnNames = {"id_atividade", "id_usuario"})
