@@ -57,7 +57,7 @@ public class AgendamentoController {
 	
 	@PostMapping("/listarEvento")
 	@ResponseBody
-	public List<Agendamento> listarAgendamentoDoEvento(@Valid @RequestBody Evento evento){
+	public List<Agendamento> listarAgendamentoDoEvento(@RequestBody Evento evento){
 		return agendamentoServ.listarPorEvento(evento);
 	}
 	
