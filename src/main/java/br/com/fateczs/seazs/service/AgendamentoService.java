@@ -3,6 +3,7 @@ package br.com.fateczs.seazs.service;
 import java.util.List;
 
 import br.com.fateczs.seazs.model.Agendamento;
+import br.com.fateczs.seazs.model.Evento;
 
 public interface AgendamentoService {
 	
@@ -17,4 +18,7 @@ public interface AgendamentoService {
 	public List<Agendamento> listar();
 	
 	public List<Agendamento> listarPorDataAsc();
+	
+	public List<Agendamento> listarPorEvento(Evento evento);
+	
 }

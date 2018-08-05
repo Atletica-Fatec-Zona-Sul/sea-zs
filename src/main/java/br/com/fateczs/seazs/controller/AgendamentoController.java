@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fateczs.seazs.model.Agendamento;
+import br.com.fateczs.seazs.model.Evento;
 import br.com.fateczs.seazs.service.AgendamentoService;
 
 @RestController
@@ -52,6 +53,12 @@ public class AgendamentoController {
 	@ResponseBody
 	public List<Agendamento> lsitarAgendamentoPorDtinicio() {
 		return agendamentoServ.listarPorDataAsc();
+	}
+	
+	@PostMapping("/listarEvento")
+	@ResponseBody
+	public List<Agendamento> listarAgendamentoDoEvento(@Valid @RequestBody Evento evento){
+		return agendamentoServ.listarPorEvento(evento);
 	}
 	
 	@Autowired

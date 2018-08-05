@@ -59,6 +59,7 @@ public class InscricaoServiceImpl implements InscricaoService {
 	@SuppressWarnings("deprecation")
 	@Override
 	public Inscricao validaPresença(Inscricao inscricao) {
+		inscricao = buscar(inscricao);
 		Date agora = new Date();
 		Date inicioEntrada = operaData.somaMinutos(inscricao.getAtividade().getInicioAtividade(), -10);
 		Date fimEntrada = operaData.somaMinutos(inscricao.getAtividade().getInicioAtividade(), 30);

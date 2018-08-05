@@ -7,12 +7,20 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.fateczs.seazs.model.Agendamento;
+import br.com.fateczs.seazs.model.Evento;
 import br.com.fateczs.seazs.repository.AgendamentoRepository;
 import br.com.fateczs.seazs.service.AgendamentoService;
 
 @Service
 public class AgendamentoServiceImpl implements AgendamentoService {
-
+	
+	@Autowired
+	private AgendamentoRepository repository;
+	
+	private Sort sortByInicioAsc() {
+		return new Sort(Sort.Direction.ASC, "inicio");
+	}
+	
 	@Override
 	public Agendamento buscar(Agendamento agendamento) {
 		// TODO Auto-generated method stub
@@ -49,10 +57,8 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 		return repository.findAll(sortByInicioAsc());
 	}
 
-	@Autowired
-	private AgendamentoRepository repository;
-	
-	private Sort sortByInicioAsc() {
-		return new Sort(Sort.Direction.ASC, "inicio");
+	@Override
+	public List<Agendamento> listarPorEvento(Evento evento) {
+		return repository.findByEventoId(evento.getId());
 	}
 }
