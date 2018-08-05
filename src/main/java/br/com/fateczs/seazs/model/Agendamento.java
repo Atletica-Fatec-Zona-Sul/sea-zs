@@ -58,8 +58,8 @@ public class Agendamento {
 	@Column(name = "pontuacaoStaff", nullable = false)
 	private Integer pontuacaoStaff;
 	
-	//@OneToMany(mappedBy = "agendamento")
-	//private List<Atividade> atividades;
+	@OneToMany(mappedBy = "agendamento")
+	private List<Atividade> atividades;
 	
 	public Agendamento () { }
 
@@ -111,13 +111,13 @@ public class Agendamento {
 		this.pontuacaoStaff = pontuacaoStaff;
 	}
 
-//	public List<Atividade> getAtividades() {
-//		return atividades;
-//	}
+	public List<Atividade> getAtividades() {
+		return atividades;
+	}
 
-//	public void setAtividades(List<Atividade> atividades) {
-//		this.atividades = atividades;
-//	}
+	public void setAtividades(List<Atividade> atividades) {
+		this.atividades = atividades;
+	}
 	
 	
 }

@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -32,6 +33,7 @@ public class Atividade {
 	@Column(name = "id_Atividade")
 	private Integer id;
 	
+	@JsonIgnore
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_agendamento")
 	private Agendamento agendamento;
