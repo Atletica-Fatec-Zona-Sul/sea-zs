@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import br.com.fateczs.seazs.model.Atividade;
 import br.com.fateczs.seazs.model.Inscricao;
+import br.com.fateczs.seazs.model.Usuario;
 import br.com.fateczs.seazs.repository.InscricaoRepository;
 import br.com.fateczs.seazs.service.InscricaoService;
 import br.com.fateczs.seazs.utils.DataUtils;
@@ -72,6 +74,7 @@ public class InscricaoServiceImpl implements InscricaoService {
 		System.out.println("inicioSaida: " + inicioSaida.toLocaleString());
 		System.out.println("fimEntrada: " + fimSaida.toLocaleString());
 		
+		
 		if(agora.before(fimEntrada)) {
 			if(agora.after(inicioEntrada)) {
 				System.out.println("Dentro do horário de entrada");
@@ -99,8 +102,45 @@ public class InscricaoServiceImpl implements InscricaoService {
 		}
 		return inscricao;
 	}
-
+	
+	
+	@Override
+	public List<Inscricao> listarPorAtividade(Atividade atividade) {
+		// TODO Auto-generated method stub
+		return repository.findByAtividadeId(atividade.getId());
+	}
+	
+	@Override
+	public List<Inscricao> listarPorUsuario(Usuario usuario){
+		return repository.findByUsuarioId(usuario.getId());
+	}
+	
+	@Override
+	public Integer somaTotalDePontos(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return repository.somaPontuacaoRecebida(usuario.getId());
+	}
+	
+	@Override
+	public Integer somaTotalDePontosNoSemestre(Usuario usuario) {
+		Integer pontuacao = null;
+		if (operaData.verificaSemestre(operaData.getDataAtual()) == 1){
+			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), 1, 7);
+		}
+		else if (operaData.verificaSemestre(operaData.getDataAtual()) == 2) {
+			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), 8, 12);
+		}
+		
+		return pontuacao;
+	}
+	
+	
+	
 	@Autowired
 	private InscricaoRepository repository;
+
+
+
+
 
 }

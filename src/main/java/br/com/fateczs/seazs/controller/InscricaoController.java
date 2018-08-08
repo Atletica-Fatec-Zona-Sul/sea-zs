@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.fateczs.seazs.model.Atividade;
 import br.com.fateczs.seazs.model.Inscricao;
+import br.com.fateczs.seazs.model.Usuario;
 import br.com.fateczs.seazs.service.InscricaoService;
 
 
@@ -44,7 +47,7 @@ public class InscricaoController {
 	
 	@PostMapping("/listar")
 	@ResponseBody
-	public List<Inscricao> listarPapel() {
+	public List<Inscricao> listarInscricao() {
 		return inscricaoServ.listar();
 	}
 	
@@ -58,6 +61,30 @@ public class InscricaoController {
 	@ResponseBody
 	public Inscricao validaPresenca(@Valid @RequestBody Inscricao inscricao) {
 		return inscricaoServ.validaPresença(inscricao);
+	}
+	
+	@PostMapping("/listarAtividade")
+	@ResponseBody
+	public List<Inscricao> listarPorAtividade(@RequestBody Atividade atividade){
+		return inscricaoServ.listarPorAtividade(atividade);
+	}
+	
+	@PostMapping("/listarUsuario")
+	@ResponseBody
+	public List<Inscricao> listarPorUsuario(@RequestBody Usuario usuario){
+		return inscricaoServ.listarPorUsuario(usuario);
+	}
+	
+	@PostMapping("/somarPontos")
+	@ResponseBody
+	public Integer somarTotalDePontos(@RequestBody Usuario usuario){
+		return inscricaoServ.somaTotalDePontos(usuario);
+	}
+	
+	@PostMapping("/somarPontosSemestre")
+	@ResponseBody
+	public Integer somarTotalDePontosSemestre(@RequestBody Usuario usuario) {
+		return inscricaoServ.somaTotalDePontosNoSemestre(usuario);
 	}
 	
 	

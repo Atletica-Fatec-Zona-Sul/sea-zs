@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import br.com.fateczs.seazs.model.Usuario;
 import br.com.fateczs.seazs.model.UsuarioDisciplina;
 import br.com.fateczs.seazs.service.UsuarioDisciplinaService;
 
@@ -46,6 +46,12 @@ public class UsuarioDisciplinaController {
 	@ResponseBody
 	public List<UsuarioDisciplina> listarUsuarioDisciplina() {
 		return usuarioDisciplinaServ.listar();
+	}
+	
+	@PostMapping("/DisciplinasUsuario")
+	@ResponseBody
+	public List<UsuarioDisciplina> listarDisciplinasUsuario(@RequestBody Usuario usuario){
+		return usuarioDisciplinaServ.recuperarDisciplinasDoUsuario(usuario);
 	}
 	
 	@Autowired

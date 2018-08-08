@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import br.com.fateczs.seazs.model.Agendamento;
 import br.com.fateczs.seazs.model.Atividade;
 import br.com.fateczs.seazs.repository.AtividadeRepository;
 import br.com.fateczs.seazs.service.AtividadeService;
@@ -54,5 +55,10 @@ public class AtividadeServiceImpl implements AtividadeService {
 	
 	private Sort sortByInicioAsc() {
 		return new Sort(Sort.Direction.ASC, "inicioAtividade");
+	}
+
+	@Override
+	public List<Atividade> listarPorAgendamento(Agendamento agendamento) {
+		return repository.findByAgendamentoId(agendamento.getId());
 	}
 }

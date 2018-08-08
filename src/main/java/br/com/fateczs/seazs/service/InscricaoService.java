@@ -1,8 +1,9 @@
 package br.com.fateczs.seazs.service;
 
 import java.util.List;
-
+import br.com.fateczs.seazs.model.Atividade;
 import br.com.fateczs.seazs.model.Inscricao;
+import br.com.fateczs.seazs.model.Usuario;
 
 public interface InscricaoService {
 	public Inscricao buscar(Inscricao inscricao);
@@ -15,7 +16,15 @@ public interface InscricaoService {
 	
 	public List<Inscricao> listar();
 
-	List<Inscricao> listarPorDataAsc();
+	public List<Inscricao> listarPorDataAsc();
 	
 	public Inscricao validaPresença(Inscricao inscricao);
+	
+	public List<Inscricao> listarPorAtividade(Atividade atividade);
+	
+	public List<Inscricao> listarPorUsuario(Usuario usuario);
+	
+	public Integer somaTotalDePontos(Usuario usuario);
+	
+	public Integer somaTotalDePontosNoSemestre(Usuario usuario);
 }

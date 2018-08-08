@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fateczs.seazs.model.Agendamento;
 import br.com.fateczs.seazs.model.Atividade;
 import br.com.fateczs.seazs.service.AtividadeService;
 
@@ -53,6 +54,12 @@ public class AtividadeController {
 	@ResponseBody
 	public List<Atividade> listarAtividadePorDtInicio() {
 		return atividadeServ.listarPorDataAsc();
+	}
+	
+	@PostMapping("/listarAgendamento")
+	@ResponseBody
+	public List<Atividade> listarAtividadePorAgendamento(@RequestBody Agendamento agendamento) {
+		return atividadeServ.listarPorAgendamento(agendamento);
 	}
 	
 	@Autowired
