@@ -1,10 +1,13 @@
 package br.com.fateczs.seazs.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,16 +18,19 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.GenericGenerator;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "tb_Agendamento")
-public class Agendamento {
+public class Agendamento implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator="native")
 	@GenericGenerator(
@@ -58,8 +64,11 @@ public class Agendamento {
 	@Column(name = "pontuacaoStaff", nullable = false)
 	private Integer pontuacaoStaff;
 	
-	@OneToMany(mappedBy = "agendamento")
-	private List<Atividade> atividades;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "agendamento")
+	//@JsonManagedReference
+	@JsonIgnoreProperties("agendamento")
+	private List<Atividade> atividades = new ArrayList<>();
 	
 	public Agendamento () { }
 

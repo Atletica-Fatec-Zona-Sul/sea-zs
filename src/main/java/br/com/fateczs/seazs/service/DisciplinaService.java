@@ -10,6 +10,8 @@ public interface DisciplinaService {
 	
 	public void inserir(Disciplina disciplina);
 	
+	public void inserirLote(List<Disciplina> disciplinas);
+	
 	public void alterar(Disciplina disciplina);
 	
 	public void excluir(Disciplina disciplina);

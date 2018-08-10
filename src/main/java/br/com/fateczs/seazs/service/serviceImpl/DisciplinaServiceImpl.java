@@ -26,6 +26,12 @@ public class DisciplinaServiceImpl implements DisciplinaService {
 		// TODO Auto-generated method stub
 		repository.save(disciplina);
 	}
+	
+	@Override
+	public void inserirLote(List<Disciplina> disciplinas) {
+		repository.saveAll(disciplinas);
+		
+	}
 
 	@Override
 	public void alterar(Disciplina disciplina) {

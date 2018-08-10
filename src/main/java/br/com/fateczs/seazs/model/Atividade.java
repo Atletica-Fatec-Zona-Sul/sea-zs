@@ -13,10 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -33,9 +31,10 @@ public class Atividade {
 	@Column(name = "id_Atividade")
 	private Integer id;
 	
-	@JsonIgnore
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_agendamento")
+	//@JsonBackReference
+	@JsonIgnoreProperties("atividades")
 	private Agendamento agendamento;
 	
 	@NotNull
@@ -197,6 +196,7 @@ public class Atividade {
 	public void setQtdCheckIn(Integer qtdCheckIn) {
 		this.qtdCheckIn = qtdCheckIn;
 	}
+	
 
 	@Override
 	public String toString() {

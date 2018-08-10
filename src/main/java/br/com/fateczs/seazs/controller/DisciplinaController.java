@@ -24,6 +24,12 @@ public class DisciplinaController {
 		disciplinaServ.inserir(disciplina);
 	}
 	
+	@PostMapping("/inserirLote")
+	@ResponseBody
+	public void inserirLoteDisciplina(@Valid @RequestBody List<Disciplina> disciplinas) {
+		disciplinaServ.inserirLote(disciplinas);
+	}
+	
 	@PostMapping("/buscar")
 	@ResponseBody
 	public Disciplina buscarDisciplina(@Valid @RequestBody Disciplina disciplina) {

@@ -72,7 +72,7 @@ import javax.persistence.TemporalType;
 		}*/
 		
 		@Temporal(TemporalType.DATE)
-		@Column(name = "data_fimDisciplina", nullable = false)
+		@Column(name = "data_fimDisciplina", nullable = true)
 		public Date getDtFim() {
 			return dtFim;
 		}
