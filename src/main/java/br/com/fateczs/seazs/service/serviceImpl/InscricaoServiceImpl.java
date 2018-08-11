@@ -16,7 +16,9 @@ import br.com.fateczs.seazs.utils.DataUtils;
 
 @Service
 public class InscricaoServiceImpl implements InscricaoService {
-
+	
+	private DataUtils operaData = new DataUtils();
+	
 	@Override
 	public Inscricao buscar(Inscricao inscricao) {
 		return repository.getOne(inscricao.getSequencialInscricao());
@@ -56,7 +58,6 @@ public class InscricaoServiceImpl implements InscricaoService {
 		return new Sort(Sort.Direction.ASC, "dtInscricao");
 	}
 	
-	DataUtils operaData = new DataUtils();
 	
 	@SuppressWarnings("deprecation")
 	@Override
@@ -72,33 +73,55 @@ public class InscricaoServiceImpl implements InscricaoService {
 		System.out.println("inicioEntrada: " + inicioEntrada.toLocaleString());
 		System.out.println("fimEntrada: " + fimEntrada.toLocaleString());
 		System.out.println("inicioSaida: " + inicioSaida.toLocaleString());
-		System.out.println("fimEntrada: " + fimSaida.toLocaleString());
+		System.out.println("fimSaida: " + fimSaida.toLocaleString());
 		
-		
-		if(agora.before(fimEntrada)) {
-			if(agora.after(inicioEntrada)) {
-				System.out.println("Dentro do horário de entrada");
-				if (!inscricao.getCheckIn()) {
-					System.out.println("Fez Check In");
-					inscricao.setCheckIn(true);
-					repository.save(inscricao);
-				}
-			}	
-		}
-		else if (agora.before(fimSaida)) {
-			if(agora.after(inicioSaida)) {
-				System.out.println("Dentro do horário de saida");
-				if (!inscricao.getCheckOut()) {
-					System.out.println("Fez Check Out");
-					inscricao.setCheckOut(true);
-					repository.save(inscricao);
+		// Verifica se a Atividade não é Continua para realizar checkIn ou CheckOut
+		if(!inscricao.getAtividade().getFlagContinua()) {
+			//Verifica se está dentro do horário de checkIn
+			if(agora.before(fimEntrada)) {
+				if(agora.after(inicioEntrada)) {
+					System.out.println("Dentro do horário de entrada");
+					if (!inscricao.getCheckIn()) {
+						System.out.println("Fez Check In");
+						inscricao.setCheckIn(true);
+						repository.save(inscricao);
+					}
+				}	
+			}
+			//Verifica se está dentro do horário de checkOut
+			else if (agora.before(fimSaida)) {
+				if(agora.after(inicioSaida)) {
+					System.out.println("Dentro do horário de saida");
+					if (!inscricao.getCheckOut()) {
+						System.out.println("Fez Check Out");
+						inscricao.setCheckOut(true);
+						repository.save(inscricao);
+					}
 				}
 			}
-		}
-		if (inscricao.getCheckIn() && inscricao.getCheckOut()) {
-					System.out.println("Presença validada, contabilizando pontos");
+			if (inscricao.getCheckIn() && inscricao.getCheckOut()) {
+						System.out.println("Presença validada, contabilizando pontos");
+						inscricao.setPontuacaoRecebida(inscricao.getAtividade().getPontuacaoParticipante());
+						repository.save(inscricao);
+			}
+		}else if(inscricao.getAtividade().getFlagContinua()) {
+			if((agora.equals(inicioEntrada) || agora.after(inicioEntrada)) && agora.before(fimEntrada)) {
+				inscricao.setCheckIn(true);
+				inscricao.setCheckOut(true);
+				if(inscricao.getAtividade().getFlagCumulativa()) {
+					System.out.println("[Contínua/Cumulativa] Presença Validada, contabilizando pontos");
+					if((inscricao.getPontuacaoRecebida()/inscricao.getAtividade().getPontuacaoParticipante()) < inscricao.getAtividade().getQtdCheckIn()) {
+						System.out.println("mais um");
+						inscricao.setPontuacaoRecebida(inscricao.getPontuacaoRecebida() + inscricao.getAtividade().getPontuacaoParticipante());
+						inscricao = repository.save(inscricao);
+					}else System.out.println("Número máximo de checkIns Realizados");
+				}
+				else {
+					System.out.println("[Contínua] Presença validada, contabilizando pontos");
 					inscricao.setPontuacaoRecebida(inscricao.getAtividade().getPontuacaoParticipante());
-					repository.save(inscricao);
+					inscricao = repository.save(inscricao);
+				}
+			}
 		}
 		return inscricao;
 	}
