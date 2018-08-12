@@ -57,6 +57,18 @@ public class InscricaoController {
 		return inscricaoServ.listarPorDataAsc();
 	}
 	
+	@PostMapping("/listarAtividadesInscrito")
+	@ResponseBody
+	public List<Atividade> listarAtividadesInscrito(@RequestBody Usuario usuario) {
+		return inscricaoServ.listarAtividadesInscrito(usuario);
+	}
+	
+	@PostMapping("/listarAtividadesParticipou")
+	@ResponseBody
+	public List<Atividade> listarAtividadesParticipou(@RequestBody Usuario usuario){
+		return inscricaoServ.listarAtividadesInscritoPassado(usuario);
+	}
+	
 	@PostMapping("/validaPresenca")
 	@ResponseBody
 	public Inscricao validaPresenca(@Valid @RequestBody Inscricao inscricao) {

@@ -56,6 +56,12 @@ public class EventoController {
 		return eventoServ.listarPorDataAsc();
 	}
 	
+	@PostMapping("/listarDisponivelData")
+	@ResponseBody
+	public List<Evento> listarEventoDisponivelPorDtInicio() {
+		return eventoServ.listarDisponivelPorDataAsc();
+	}
+	
 	@Autowired
 	private EventoService eventoServ;
 

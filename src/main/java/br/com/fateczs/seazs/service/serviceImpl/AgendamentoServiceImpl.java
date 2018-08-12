@@ -11,6 +11,13 @@ import br.com.fateczs.seazs.model.Evento;
 import br.com.fateczs.seazs.repository.AgendamentoRepository;
 import br.com.fateczs.seazs.service.AgendamentoService;
 
+
+/**
+ * [Implementação] Métodos da camada de Serviço do projeto, recebe os parametros para processar as regras de um agendamento e acessar o DAO
+ * da tabela de Agendamentos do BD.
+ * @author Gustavo Santos Valverde
+ *
+ */
 @Service
 public class AgendamentoServiceImpl implements AgendamentoService {
 	

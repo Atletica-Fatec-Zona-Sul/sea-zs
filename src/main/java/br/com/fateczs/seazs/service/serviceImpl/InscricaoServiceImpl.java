@@ -1,5 +1,6 @@
 package br.com.fateczs.seazs.service.serviceImpl;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -54,8 +55,22 @@ public class InscricaoServiceImpl implements InscricaoService {
 		return repository.findAll(sortByDtInscricaoAsc());
 	}
 	
+	@Override
+	public List<Atividade> listarAtividadesInscrito(Usuario usuario){
+		return repository.findAtividadesInscrito(usuario.getId(), sortByDtInicioAtividadeAsc());
+	}
+	
+	@Override
+	public List<Atividade> listarAtividadesInscritoPassado(Usuario usuario){
+		return repository.findAtividadesInscritoPassado(usuario.getId(), sortByDtInicioAtividadeAsc());
+	}
+	
 	private Sort sortByDtInscricaoAsc() {
 		return new Sort(Sort.Direction.ASC, "dtInscricao");
+	}
+	
+	private Sort sortByDtInicioAtividadeAsc() {
+		return new Sort(Sort.Direction.ASC, "atividade.inicioAtividade");
 	}
 	
 	
@@ -148,10 +163,10 @@ public class InscricaoServiceImpl implements InscricaoService {
 	public Integer somaTotalDePontosNoSemestre(Usuario usuario) {
 		Integer pontuacao = null;
 		if (operaData.verificaSemestre(operaData.getDataAtual()) == 1){
-			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), 1, 7);
+			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), 1, 7, operaData.getDataAtual().get(Calendar.YEAR));
 		}
 		else if (operaData.verificaSemestre(operaData.getDataAtual()) == 2) {
-			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), 8, 12);
+			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), 8, 12, operaData.getDataAtual().get(Calendar.YEAR));
 		}
 		
 		return pontuacao;

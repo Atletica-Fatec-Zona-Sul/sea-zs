@@ -17,4 +17,6 @@ public interface EventoService {
 	public List<Evento> listar();
 
 	List<Evento> listarPorDataAsc();
+	
+	List<Evento> listarDisponivelPorDataAsc();
 }

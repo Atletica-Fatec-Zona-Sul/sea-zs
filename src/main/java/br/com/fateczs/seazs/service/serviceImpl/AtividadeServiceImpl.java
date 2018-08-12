@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.fateczs.seazs.model.Agendamento;
 import br.com.fateczs.seazs.model.Atividade;
+import br.com.fateczs.seazs.model.Usuario;
 import br.com.fateczs.seazs.repository.AtividadeRepository;
 import br.com.fateczs.seazs.service.AtividadeService;
 
@@ -50,15 +51,27 @@ public class AtividadeServiceImpl implements AtividadeService {
 		return repository.findAll(sortByInicioAsc());
 	}
 	
-	@Autowired
-	private AtividadeRepository repository;
-	
-	private Sort sortByInicioAsc() {
-		return new Sort(Sort.Direction.ASC, "inicioAtividade");
-	}
-
 	@Override
 	public List<Atividade> listarPorAgendamento(Agendamento agendamento) {
 		return repository.findByAgendamentoId(agendamento.getId());
 	}
+	
+	private Sort sortByInicioAsc() {
+		return new Sort(Sort.Direction.ASC, "inicioAtividade");
+	}
+	
+	@Override
+	public List<Atividade> listarDisponiveisParaInscricao(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return repository.findAtividadeDisponivelParaInscricao(usuario.getId(), sortByInicioAsc());
+	}
+	
+	@Override
+	public List<Atividade> listarPassadas(){
+		return repository.findAtividadesPassadas(sortByInicioAsc());
+	}
+	
+	@Autowired
+	private AtividadeRepository repository;
+
 }

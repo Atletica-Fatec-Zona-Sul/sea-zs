@@ -18,6 +18,10 @@ public interface InscricaoService {
 
 	public List<Inscricao> listarPorDataAsc();
 	
+	public List<Atividade> listarAtividadesInscrito(Usuario usuario);
+	
+	public List<Atividade> listarAtividadesInscritoPassado(Usuario usuario);
+	
 	/**
 	 * Realiza a validação de presença do usuário em uma atividade, serve para os três tipos de atividades (Comum, Continua e Contínua e Cumulativa)
 	 * @param inscricao inscrição para validar.

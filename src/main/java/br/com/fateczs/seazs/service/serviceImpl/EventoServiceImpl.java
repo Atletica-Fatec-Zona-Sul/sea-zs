@@ -51,6 +51,12 @@ public class EventoServiceImpl implements EventoService {
 		return repository.findAll(sortByInicioAsc());
 	}
 	
+	@Override
+	public List<Evento> listarDisponivelPorDataAsc() {
+		// TODO Auto-generated method stub
+		return repository.findByFimAfterToday(sortByInicioAsc());
+	}
+	
 	private Sort sortByInicioAsc() {
 		return new Sort(Sort.Direction.ASC, "inicio");
 	}
