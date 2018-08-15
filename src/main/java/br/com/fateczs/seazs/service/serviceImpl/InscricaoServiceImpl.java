@@ -27,6 +27,10 @@ public class InscricaoServiceImpl implements InscricaoService {
 
 	@Override
 	public void inserir(Inscricao inscricao) {
+		inscricao.setDtInscricao(operaData.getDataAtual().getTime());;
+		inscricao.setCheckIn(false);
+		inscricao.setCheckOut(false);
+		inscricao.setPontuacaoRecebida(0);
 		// TODO Auto-generated method stub
 		repository.save(inscricao);
 	}
@@ -176,9 +180,4 @@ public class InscricaoServiceImpl implements InscricaoService {
 	
 	@Autowired
 	private InscricaoRepository repository;
-
-
-
-
-
 }

@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.fateczs.seazs.model.Agendamento;
 import br.com.fateczs.seazs.model.StaffAgendamento;
+import br.com.fateczs.seazs.model.Usuario;
 import br.com.fateczs.seazs.service.StaffAgendamentoService;
 
 @RestController
@@ -51,6 +54,26 @@ public class StaffAgendamentoController {
 	@ResponseBody
 	public List<StaffAgendamento> listarAtividadePorDtInicio() {
 		return staffServ.listarPorDataAsc();
+	}
+	
+	@PostMapping("/ValidarPresenca")
+	@ResponseBody
+	public StaffAgendamento validarPresenca(@RequestBody StaffAgendamento staff) {
+		staff.toString();
+		System.out.println(staff.getAgendamento().getId());
+		return staffServ.validarPresencaStaff(staff);
+	}
+	
+	@PostMapping("/AgendamentosUsuario")
+	@ResponseBody
+	public List<Agendamento> listarAgendamentosUsuario(@RequestBody Usuario usuario){
+		return staffServ.listarAgendamentosUsuario(usuario);
+	}
+	
+	@PostMapping("/AgendamentosUsuarioPassado")
+	@ResponseBody
+	public List<Agendamento> listarAgendamentosUsuarioPassado(@RequestBody Usuario usuario){
+		return staffServ.listarAgendamentosUsuarioPassado(usuario);
 	}
 	
 	@Autowired

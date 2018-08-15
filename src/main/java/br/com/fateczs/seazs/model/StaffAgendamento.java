@@ -17,6 +17,10 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity(name = "StaffAgendamento")
 @Table(name = "tb_Staff_Agendamento",
 uniqueConstraints = @UniqueConstraint(columnNames = {"id_agendamento", "id_usuario"})
@@ -33,6 +37,7 @@ public class StaffAgendamento {
 	private Integer sequencialStaff;
 	
 	@ManyToOne(optional = false)
+	@JsonIgnoreProperties("atividades")
 	@JoinColumn(name = "id_agendamento")
 	private Agendamento agendamento;
 	

@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
@@ -37,14 +38,17 @@ public class Inscricao {
 	@Column(name = "sq_Inscricao")
 	private Integer sequencialInscricao;
 	
+	@NotNull
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_atividade")
 	private Atividade atividade;
 	
+	@NotNull
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
+	@NotNull
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_papel")
 	private Papel papel;
@@ -54,11 +58,9 @@ public class Inscricao {
 	private Date dtInscricao;
 	
 	@Column(name = "checkIn")
-	@ColumnDefault("0")
 	private Boolean checkIn;
 	
 	@Column(name = "checkOut")
-	@ColumnDefault("0")
 	private Boolean checkOut;
 	
 	@Column(name = "pontuacaoParticipante")
