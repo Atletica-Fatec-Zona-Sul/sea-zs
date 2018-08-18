@@ -166,13 +166,18 @@ public class InscricaoServiceImpl implements InscricaoService {
 	@Override
 	public Integer somaTotalDePontosNoSemestre(Usuario usuario) {
 		Integer pontuacao = null;
+		Calendar dataIni = Calendar.getInstance();
+		Calendar dataFim = Calendar.getInstance();
 		if (operaData.verificaSemestre(operaData.getDataAtual()) == 1){
-			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), 1, 7, operaData.getDataAtual().get(Calendar.YEAR));
+			dataIni.set(dataIni.get(Calendar.YEAR), 0, 1, 0 , 0 , 1);
+			dataFim.set(dataFim.get(Calendar.YEAR), 6, 31, 23, 59, 59);
+			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), dataIni, dataFim);
 		}
 		else if (operaData.verificaSemestre(operaData.getDataAtual()) == 2) {
-			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), 8, 12, operaData.getDataAtual().get(Calendar.YEAR));
+			dataIni.set(dataIni.get(Calendar.YEAR), 7, 1, 0 , 0 , 1);
+			dataFim.set(dataFim.get(Calendar.YEAR), 11, 31, 23, 59, 59);
+			pontuacao = repository.somaPontuacaoRecebidaNoSemestre(usuario.getId(), dataIni, dataFim);
 		}
-		
 		return pontuacao;
 	}
 	
