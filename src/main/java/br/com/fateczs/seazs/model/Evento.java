@@ -50,7 +50,7 @@ public class Evento {
 	@Column(name = "data_fim", nullable = false)
 	private Date fim;
 	
-	@NotNull
+//	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_inclusao", nullable = false)
 	private Date dataInclusao;

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import br.com.fateczs.seazs.service.CursoService;
 @RequestMapping("/curso")
 public class CursoController {
 
-	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/inserir")
 	@ResponseBody
 	public void inserirCurso(@Valid @RequestBody Curso curso) {
@@ -43,6 +44,7 @@ public class CursoController {
 		cursoServ.excluir(curso);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/listar")
 	@ResponseBody
 	public List<Curso> listarCurso() {

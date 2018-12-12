@@ -1,5 +1,6 @@
 package br.com.fateczs.seazs.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,9 +20,11 @@ import br.com.fateczs.seazs.service.EventoService;
 @RequestMapping("/evento")
 public class EventoController {
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/inserir")
 	@ResponseBody
 	public void inserirEvento(@Valid @RequestBody Evento evento) {
+		evento.setDataInclusao(new Date(System.currentTimeMillis()));
 		eventoServ.inserir(evento);
 	}
 	

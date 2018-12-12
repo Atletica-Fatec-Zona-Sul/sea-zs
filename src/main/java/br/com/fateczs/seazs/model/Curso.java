@@ -28,19 +28,23 @@ public class Curso {
 	@Column(name = "id_curso")
 	private Integer id;
 	
-	@NotNull
+//	@NotNull
 	@Column(name = "nome_curso", nullable = false)
 	private String nome;
 	
-	@NotNull
+//	@NotNull
 	@Column(name = "modalidade_curso", nullable = false)
 	private Integer modalidade;
 	
-	@NotNull
+//	@NotNull
 	@Column(name = "qtd_semestre", nullable = false)
 	private Integer qtdSemestres;
 	
 	public Curso() {}
+	
+	public Curso(String id) {
+		this.id = Integer.parseInt(id);
+	}
 	
 	public Integer getId() {
 		return id;
