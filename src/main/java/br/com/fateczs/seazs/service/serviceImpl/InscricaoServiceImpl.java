@@ -77,10 +77,9 @@ public class InscricaoServiceImpl implements InscricaoService {
 		return new Sort(Sort.Direction.ASC, "atividade.inicioAtividade");
 	}
 	
-	
-	@SuppressWarnings("deprecation")
+
 	@Override
-	public Inscricao validaPresença(Inscricao inscricao) {
+	public Inscricao validaPresenca(Inscricao inscricao) {
 		inscricao = buscar(inscricao);
 		Date agora = new Date();
 		Date inicioEntrada = operaData.somaMinutos(inscricao.getAtividade().getInicioAtividade(), -10);

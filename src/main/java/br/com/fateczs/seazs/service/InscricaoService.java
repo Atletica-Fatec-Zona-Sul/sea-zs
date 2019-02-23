@@ -26,7 +26,7 @@ public interface InscricaoService {
 	 * Realiza a validação de presença do usuário em uma atividade, serve para os três tipos de atividades (Comum, Continua e Contínua e Cumulativa)
 	 * @param inscricao inscrição para validar.
 	 */
-	public Inscricao validaPresença(Inscricao inscricao);
+	public Inscricao validaPresenca(Inscricao inscricao);
 	
 	public List<Inscricao> listarPorAtividade(Atividade atividade);
 	

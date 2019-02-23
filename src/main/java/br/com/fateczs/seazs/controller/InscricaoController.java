@@ -72,7 +72,7 @@ public class InscricaoController {
 	@PostMapping("/validaPresenca")
 	@ResponseBody
 	public Inscricao validaPresenca(@Valid @RequestBody Inscricao inscricao) {
-		return inscricaoServ.validaPresença(inscricao);
+		return inscricaoServ.validaPresenca(inscricao);
 	}
 	
 	@PostMapping("/listarAtividade")

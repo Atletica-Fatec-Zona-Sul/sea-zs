@@ -70,7 +70,7 @@ public class AtividadeServiceImpl implements AtividadeService {
 	public List<Atividade> listarPassadas(){
 		return repository.findAtividadesPassadas(sortByInicioAsc());
 	}
-	
+
 	@Autowired
 	private AtividadeRepository repository;
 
