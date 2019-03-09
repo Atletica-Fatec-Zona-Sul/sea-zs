@@ -1,28 +1,28 @@
 package br.com.fateczs.seazs.service;
 
-import java.util.List;
-
 import br.com.fateczs.seazs.model.Agendamento;
 import br.com.fateczs.seazs.model.Atividade;
 import br.com.fateczs.seazs.model.Usuario;
 
+import java.util.List;
+
 public interface AtividadeService {
 	
-	public Atividade buscar(Atividade atividade);
+	Atividade buscar(Atividade atividade);
 	
-	public void inserir(Atividade atividade);
+	void inserir(Atividade atividade);
 	
-	public void alterar(Atividade atividade);
+	void alterar(Atividade atividade);
 	
-	public void excluir(Atividade atividade);
+	void excluir(Atividade atividade);
 	
-	public List<Atividade> listar();
+	List<Atividade> listar();
 	
-	public List<Atividade> listarPorDataAsc();
+	List<Atividade> listarPorDataAsc();
 	
-	public List<Atividade> listarPorAgendamento(Agendamento agendamento);
+	List<Atividade> listarPorAgendamento(Agendamento agendamento);
 	
-	public List<Atividade> listarDisponiveisParaInscricao(Usuario usuario);
+	List<Atividade> listarDisponiveisParaInscricao(Usuario usuario);
 	
-	public List<Atividade> listarPassadas();
+	List<Atividade> listarPassadas();
 }

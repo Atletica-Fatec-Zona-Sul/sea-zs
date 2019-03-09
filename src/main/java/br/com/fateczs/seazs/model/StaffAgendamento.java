@@ -1,23 +1,11 @@
 package br.com.fateczs.seazs.model;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.*;
+import java.util.Date;
 
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -115,7 +103,9 @@ public class StaffAgendamento {
 	public void setPontuacaoRecebida(Integer pontuacaoRecebida) {
 		this.pontuacaoRecebida = pontuacaoRecebida;
 	}
-	
-	
+
+	public boolean validouPresenca(){
+		return (checkIn && checkOut);
+	}
 	
 }
