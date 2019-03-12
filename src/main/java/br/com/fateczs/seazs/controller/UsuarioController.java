@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import br.com.fateczs.seazs.model.CrachaUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +56,10 @@ public class UsuarioController {
 	public Usuario loginUsuario(@RequestBody Usuario usuario){
 		return usuServ.validarLogin(usuario);
 	}
+
+	@PostMapping("/cracha")
+	@ResponseBody
+	public CrachaUsuario emitirCracha(@RequestBody Usuario usuario) {return usuServ.emitirCracha(usuario);}
 
 	@Autowired
 	private UsuarioService usuServ;

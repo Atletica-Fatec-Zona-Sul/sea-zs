@@ -7,18 +7,18 @@ import br.com.fateczs.seazs.model.Usuario;
 
 public interface UsuarioService {
 
-	public Usuario buscar(Usuario usuario);
+	Usuario buscar(Usuario usuario);
 	
-	public void inserir(Usuario usuario);
+	void inserir(Usuario usuario);
 	
-	public void alterar(Usuario usuario);
+	void alterar(Usuario usuario);
 	
-	public void excluir(Usuario usuario);
+	void excluir(Usuario usuario);
 	
-	public List<Usuario> listar();
+	List<Usuario> listar();
 	
-	public Usuario validarLogin(Usuario usuario);
+	Usuario validarLogin(Usuario usuario);
 
-	public CrachaUsuario emitirCracha(Usuario usuario);
+	CrachaUsuario emitirCracha(Usuario usuario);
 	
 }
