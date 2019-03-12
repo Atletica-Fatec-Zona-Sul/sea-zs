@@ -2,6 +2,8 @@ package br.com.fateczs.seazs.service.serviceImpl;
 
 import java.util.List;
 
+import br.com.fateczs.seazs.model.CrachaUsuario;
+import br.com.fateczs.seazs.model.mapper.CrachaUsuarioMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +53,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 		String email = usuario.getEmail();
 		String senha = usuario.getSenha();
 		return repository.getByEmailAndSenha(email, senha);
+	}
+
+	@Override
+	public CrachaUsuario emitirCracha(Usuario usuario) {
+		usuario = repository.getOne(usuario.getId());
+		CrachaUsuarioMapper crachaUsuarioMapper = new CrachaUsuarioMapper();
+		return crachaUsuarioMapper.createFrom(usuario);
 	}
 
 }

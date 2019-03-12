@@ -2,6 +2,7 @@ package br.com.fateczs.seazs.service;
 
 import java.util.List;
 
+import br.com.fateczs.seazs.model.CrachaUsuario;
 import br.com.fateczs.seazs.model.Usuario;
 
 public interface UsuarioService {
@@ -17,5 +18,7 @@ public interface UsuarioService {
 	public List<Usuario> listar();
 	
 	public Usuario validarLogin(Usuario usuario);
+
+	public CrachaUsuario emitirCracha(Usuario usuario);
 	
 }
